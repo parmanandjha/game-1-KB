@@ -1,0 +1,25 @@
+<style>
+body{background:#322;color:#fff;font:20px Arial;text-align:center}
+#b{width:380px;height:270px;background:#c95;border:5px solid #fff;margin:auto;position:relative;overflow:hidden}
+#k,#p{width:56px;height:42px;position:absolute;outline:4px solid #fff}
+#k{background:#ddd;border-right:22px solid #631}
+#p{background:#d93;border-radius:50%;top:210px;line-height:42px;color:#420}
+</style>
+<p id="m">Saved: 0</p>
+<div id="b"><div id="k">o</div><div id="p">^u^</div></div>
+<script>
+let x=160, kx=160, ky=10, s=0, d=0
+onmousemove = e => { if (!d) x = e.x-b.offsetLeft-28 }
+onclick = () => { if (d) s=d=0, ky=10 }
+setInterval(() => {
+  if (d) return
+  if (ky<60) { kx += (x-kx)*0.12; ky += 2; p.innerText="^u^" }
+  else { ky += 11+s*0.4; p.innerText="O_O" }
+  if (ky>170 && Math.abs(x-kx)<50) { d=1; p.innerText="X_X" }
+  if (ky>210) { ky=10; s++ }
+  m.innerText = d ? "CHOPPED! Score: "+s : "Saved: "+s
+  p.style.left = x+"px"
+  k.style.left = kx+"px"
+  k.style.top = ky+"px"
+}, 20)
+</script>
